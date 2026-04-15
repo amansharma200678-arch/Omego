@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>🔥 Omego</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+  <div class="app-shell">
+
+    <!-- HEADER -->
+    <div class="header">
+      <div class="logo">
+        <img src="logo.png" alt="logo">
+      </div>
+
+      <div class="menu">
+        <span>VIDEO CHAT</span>
+        <span>MESSAGE</span>
+        <span>HISTORY</span>
+      </div>
+
+      <div id="online">Online: 0</div>
+
+      <div class="right">
+        <button class="login-btn" onclick="loginWithGoogle()" id="loginBtn">
+          Login
+        </button>
+
+        <img id="profileIcon" src="" style="display:none; width:35px; height:35px; border-radius:50%;">
+      </div>
+    </div>
+
+    <div class="main">
+
+      <!-- 🔥 FRIENDS PANEL -->
+      <div id="friendsPanel">
+        <h3>Friends</h3>
+
+        <!-- 🔍 Search -->
+        <input id="searchUser" placeholder="Search username">
+        <button onclick="searchUser()">Search</button>
+
+        <!-- ➕ Add -->
+        <div id="searchResult"></div>
+
+        <!-- 📥 Requests -->
+        <h4>Requests</h4>
+        <div id="requestsBox"></div>
+
+        <!-- 👥 Friends -->
+        <h4>Friend List</h4>
+        <div id="friendsList"></div>
+      </div>
+
+      <!-- CENTER: VIDEO AREA -->
+      <div class="video-column">
+        <!-- VIDEO -->
+        <div class="video-section">
+          <div id="status" class="top-bar">Connecting...</div>
+          <video id="userVideo" autoplay playsinline></video>
+        </div>
+
+        <!-- MY VIDEO -->
+        <div class="my-video-box">
+          <video id="myVideo" autoplay muted playsinline></video>
+        </div>
+
+        <!-- CONTROLS -->
+        <div class="controls">
+          <button class="start" id="startBtn">
+            <i class="fas fa-play"></i>
+          </button>
+
+          <button class="next" id="nextBtn" style="display:none;">
+            <i class="fas fa-forward"></i>
+          </button>
+
+          <button class="mute" id="muteBtn">
+            <i class="fas fa-microphone"></i>
+          </button>
+
+          <button class="end" id="endBtn">
+            <i class="fas fa-phone-slash"></i>
+         
+        </div>
+      </div>
+
+      <!-- CHAT -->
+      <div class="chat-section" id="chatBox">
+        <div id="chat"></div>
+        <div id="typing"></div>
+        <input id="msg" placeholder="Type..." />
+        <button onclick="sendMsg()">Send</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- USER FORM -->
+  <div id="userForm" style="
+    display:none;
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    background:#111;
+    padding:20px;
+    border-radius:10px;
+    z-index:9999;
+    text-align:center;
+  ">
+
+    <h3>Create Profile</h3>
+
+    <input id="username" placeholder="Enter username"><br>
+    <input id="age" type="number" placeholder="Enter age"><br>
+
+    <button onclick="saveUser()">Continue</button>
+
+    <div id="error" style="color:red; margin-top:10px;"></div>
+  </div>
+
+  <!-- SOCKET -->
+  <script src="/socket.io/socket.io.js"></script>
+
+  <!-- JS -->
+  <script src="script.js"></script>
+
+</body>
+</html>
