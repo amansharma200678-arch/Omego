@@ -386,7 +386,18 @@ function toggleMute() {
   const audioTrack = localStream.getAudioTracks()[0];
   if (audioTrack) audioTrack.enabled = !isMuted;
 }
+  const icon = document.querySelector("#muteBtn i");
 
+  if (icon) {
+    if (isMuted) {
+      icon.classList.remove("fa-microphone");
+      icon.classList.add("fa-microphone-slash");
+    } else {
+      icon.classList.remove("fa-microphone-slash");
+      icon.classList.add("fa-microphone");
+    }
+  }
+}
 // ================================
 // MESSAGE
 // ================================
